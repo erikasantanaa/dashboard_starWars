@@ -4,6 +4,7 @@ const planetasContador = document.getElementById('planetas');
 const navesContador = document.getElementById('naves');
 
 preencherContador();
+preencherTabela();
 
 function preencherContador() {    
   Promise.all([
@@ -17,6 +18,11 @@ function preencherContador() {
         planetasContador.innerHTML = results[2].data.count;
         navesContador.innerHTML = results[3].data.count;
     });
+}
+
+async function preencherTabela() {
+  const response = await swapiGet('films/');
+  console.log(response);
 }
 
 function swapiGet(param){
